@@ -1,0 +1,54 @@
+import {  GET_ERROR, CREATE_SUB_CATEGORY,GET_SUB_CATEGORY, GET_ALL_SUB_CATEGORY_ADMIN, UPDATE_SUB_CATEGORY, DELETE_SUB_CATEGORY } from "../type";
+
+const inital = {
+  subcategory: [],
+  allSubCategoryAdmin: [],
+  updateSubCategory: [],
+  deleteSubCategory: [],
+  loading: true,
+};
+
+const subcategoryReducer = (state = inital, action) => {
+  switch (action.type) {
+    case CREATE_SUB_CATEGORY:
+      return {
+        ...state,
+        subcategory: action.payload,
+        loading: false,
+      };
+    case GET_SUB_CATEGORY:
+      return {
+        ...state,
+        subcategory: action.payload,
+        loading: false,
+      };
+
+    case GET_ALL_SUB_CATEGORY_ADMIN:
+      return {
+        ...state,
+        allSubCategoryAdmin: action.payload,
+        loading: false,
+      };
+    case UPDATE_SUB_CATEGORY:
+      return {
+        ...state,
+        updateSubCategory: action.payload,
+        loading: false,
+      };
+    case DELETE_SUB_CATEGORY:
+      return {
+        ...state,
+        deleteSubCategory: action.payload,
+        loading: false,
+      };
+    case GET_ERROR:
+      return {
+        loading: true,
+        subcategory: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export default subcategoryReducer;
